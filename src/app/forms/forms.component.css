@@ -1,0 +1,18 @@
+.form-group{
+   margin-top:2%; 
+}
+select{
+    width: 40%;
+    padding: 0.3%;
+}
+.styling{
+    width: 40%;
+    padding: 0.3%;
+}
+.danger input{
+    border: 2px solid red;
+}
+.error-msg p{
+    color: red;
+    margin: 0%;
+}

@@ -1,0 +1,67 @@
+<form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+  <div class="form-group" [ngClass]="{'danger':fn.invalid && (fn.touched || fn.dirty)}">
+    <label>Full Name</label>
+    <br>
+    <input class="styling" type="text" [(ngModel)]="model.fullName" name="fn" minlength="6" #fn=ngModel required>
+    
+    <div class="error-msg" *ngIf="fn.errors && (fn.touched || fn.dirty)">
+      <p *ngIf="fn.errors.required">fullname is required</p>
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'danger':des.invalid && (des.touched || des.dirty)}">
+    <label>Designation</label>
+    <br>
+    <input class="styling" type="text" [(ngModel)]="model.designation" name="des" minlength="6" #des=ngModel required>
+    <div class="error-msg" *ngIf="des.errors && (des.touched || des.dirty)">
+        <p *ngIf="des.errors.required">Designation is required</p>
+      </div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'danger':cmp.invalid && (cmp.touched || cmp.dirty)}">
+    <label>Company</label>
+    <br>
+    <input class="styling" type="text" [(ngModel)]="model.company" name="cmp" minlength="6" #cmp=ngModel required>
+    <div class="error-msg" *ngIf="cmp.errors && (cmp.touched || cmp.dirty)">
+        <p *ngIf="cmp.errors.required">company name is required</p>
+      </div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'danger':pro.invalid && (pro.touched || pro.dirty)}">
+    <label>How do you know about this presentation?</label>
+    <br>
+    <select [(ngModel)]="model.promotion" name="pro" #pro=ngModel required>
+      <option>Company Website</option>
+      <option>Word of mouth</option>
+      <option>Social Sites</option>
+      <option>Others</option>
+    </select>
+    <div class="error-msg" *ngIf="pro.errors && (pro.touched || pro.dirty)">
+        <p *ngIf="pro.errors.required">please fill the field with given options</p>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label>RATING</label>
+    <br>
+    <div *ngFor="let num of rating">
+      <input type="radio" name="rtg" [(ngModel)]="model.result" [value]=num required>
+      <label>{{num}}</label>
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'danger':fs.invalid && (fs.touched || fs.dirty)}">
+    <label>Feedback And Suggestion</label>
+    <br>
+    <input type="text" [(ngModel)]="model.feedBack" class="styling" name="fs" #fs=ngModel minlength="20" maxlength="300" required>
+    <div class="error-msg" *ngIf="fs.errors && (fs.touched || fs.dirty)">
+        <p *ngIf="fs.errors.required">please give feedback and suggestion if you have any</p>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" value="Submit"> &nbsp;&nbsp;&nbsp;
+    <input type="reset" value="Reset">
+  </div>
+  <div >{{f.value| json}}</div>
+</form>
